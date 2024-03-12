@@ -4,7 +4,7 @@ RUN apt-get update && apt-get -y install wget && \
     wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian11-x86_64-100.9.4.deb && \
     apt-get install ./mongodb-database-tools-*.deb
 
-FROM ghcr.io/bo-i-t/docker-cron:bullseye
+FROM bo-i-t/docker-cron:v1.0.0
 
 COPY --from=installer /usr/bin/mongodump /usr/bin
 
