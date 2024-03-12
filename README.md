@@ -5,13 +5,23 @@ Easily automate MongoDB backups.
 Intended to facilitate fast setup of automated MongoDB backups by combining [bo-i-t/docker-cron](https://github.com/bo-i-t/docker-cron)
 and [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/).
 
+### Important Note  
+Due to the [complex nature of licensing prebuild container images](https://www.linuxfoundation.org/resources/publications/docker-containers-what-are-the-open-source-licensing-considerations) we do currently not publish the required base image `bo-i-t/docker-cron:v1.0.0`
+in a container registry.
+Hence, it needs to be build locally first, before attempting to build the image specified in this repo's [Dockerfile](./Dockerfile). This can be done via
+```
+docker build -t bo-i-t/docker-cron:v1.0.0 https://github.com/bo-i-t/docker-cron.git#v1.0.0
+```
+
 ## Quickstart
 
 For illustration purposes, the example in [docker-compose.yml](./docker-compose.yml) will be used.
 
 **Note that this configuration should not be used in production.**
 
-The examples services are startet via
+First, the required base image needs to be build locally, as described in the note above.
+
+Now the examples services can be started via
 ```
 docker compose up -d
 ```
@@ -66,3 +76,7 @@ Any other `<DB>` could be manually backed up via
 ```
 docker compose exec mongo-backup dump.sh <DB>
 ```
+
+# License
+
+This project is licensed under the terms of the MIT license.
