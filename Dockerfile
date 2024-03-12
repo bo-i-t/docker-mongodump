@@ -9,3 +9,4 @@ FROM bo-i-t/docker-cron:v1.0.0
 COPY --from=installer /usr/bin/mongodump /usr/bin
 
 COPY dump.sh /usr/bin/dump.sh
+RUN chmod +x /usr/bin/dump.sh
